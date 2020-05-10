@@ -8,25 +8,23 @@ window.addEventListener("load", () => {
 
     const address = document.getElementById("address-input").value;
 
-    fetch(`http://localhost:3000/weather?address=${address}`).then(
-      (response) => {
-        response.json().then((data) => {
-          document.getElementById("error").textContent = "";
-          document.getElementById("message").textContent = "";
+    fetch(`/weather?address=${address}`).then((response) => {
+      response.json().then((data) => {
+        document.getElementById("error").textContent = "";
+        document.getElementById("message").textContent = "";
 
-          let text = "";
-          if (data.error) {
-            text = data.error;
-            document.getElementById("error").textContent = text;
+        let text = "";
+        if (data.error) {
+          text = data.error;
+          document.getElementById("error").textContent = text;
 
-            return;
-          }
+          return;
+        }
 
-          text = `It is ${data.temperature} in ${data.place} but feels like 
+        text = `It is ${data.temperature} in ${data.place} but feels like 
             ${data.feelslike}`;
-          document.getElementById("message").textContent = text;
-        });
-      }
-    );
+        document.getElementById("message").textContent = text;
+      });
+    });
   });
 });
