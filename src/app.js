@@ -25,9 +25,6 @@ app.get("", (req, res) => {
     title: "Weather",
     name: "Anjali Hariharan",
   });
-  // res.sendFile("about.html", {
-  //   root: publicDirPath,
-  // });
 });
 
 app.get("/about", (req, res) => {
